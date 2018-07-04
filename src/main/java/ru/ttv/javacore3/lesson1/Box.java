@@ -21,13 +21,14 @@ public class Box<T extends Fruit> {
         return totalWeight;
     }
 
-    public boolean compare(Box<Fruit> fruitBox ){
-        return getWeight() == fruitBox.getWeight();
+    public <F extends Fruit> boolean compare(Box<F> fruitBoxForCompare ){
+        return getWeight() == fruitBoxForCompare.getWeight();
     }
 
     public void intersperse(Box<T> destinationBox){
         for (T fruit : fruitBox){
             destinationBox.addFruit(fruit);
         }
+        fruitBox.clear();
     }
 }
