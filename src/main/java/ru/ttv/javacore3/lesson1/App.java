@@ -3,7 +3,6 @@ package ru.ttv.javacore3.lesson1;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * @author Timofey Teplykh
