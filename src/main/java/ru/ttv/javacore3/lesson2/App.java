@@ -18,7 +18,7 @@ public class App {
             //DatabaseMetaData dbMeta = conn.getMetaData();
 
             DBprocess dbProcess = new DBprocess(conn);
-            //dbProcess.initDB();
+            dbProcess.initDB();
 
             Scanner scanner = new Scanner(System.in);
             while(true){
