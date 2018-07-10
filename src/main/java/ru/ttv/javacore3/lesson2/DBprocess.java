@@ -28,8 +28,9 @@ public class DBprocess {
             pstmnt.setString(1,"id_product"+i);
             pstmnt.setString(2,"product"+i);
             pstmnt.setFloat(3,new Float(i*10));
-            pstmnt.executeUpdate();
+            pstmnt.addBatch();
         }
+        pstmnt.executeBatch();
     }
 
     private String getInitialQuery() {
