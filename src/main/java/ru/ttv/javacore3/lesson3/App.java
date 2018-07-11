@@ -1,26 +1,9 @@
 package ru.ttv.javacore3.lesson3;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class App {
-
-    //File
-    //Path
-    //FileDescriptor
-
-    //ByteArrayInputStream
-        //FileInputStream
-    //PipedInputStream
-    //SequenceInputStream
-    //BufferedInputStream
-    //DataInputStream
-    //ObjectInputStream
-        //InputStreamReader
-        //BufferedReader
-    //RandomAccessFile
-
     public static void main(String[] args){
         MyFileReader myFileReader = new MyFileReader();
 
@@ -38,7 +21,16 @@ public class App {
         paths[3] = "C:/JavaProjects/4.txt";
         paths[4] = "C:/JavaProjects/5.txt";
         File resultFile = myFileReader.getJoinedFile(paths);
+
+        //Task 3
+        long startTime = System.currentTimeMillis();
+        System.out.println(myFileReader.getPageByNumber("C:/JavaProjects/testPageReading.txt",10));
+        System.out.println("10th page");
+        System.out.println(System.currentTimeMillis() - startTime);
+
+        startTime = System.currentTimeMillis();
+        System.out.println(myFileReader.getPageByNumber("C:/JavaProjects/testPageReading.txt",100));
+        System.out.println("100th page");
+        System.out.println(System.currentTimeMillis() - startTime);
     }
-
-
 }

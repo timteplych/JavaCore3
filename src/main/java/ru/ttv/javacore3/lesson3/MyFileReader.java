@@ -51,4 +51,20 @@ public class MyFileReader {
 
         return outPutFile;
     }
+
+    public String getPageByNumber(String pathToFile, int pageNumber){
+        if(pageNumber < 1) return null;
+        StringBuilder sb = new StringBuilder();
+        try (RandomAccessFile randomAccessFile = new RandomAccessFile(pathToFile,"r")){
+            randomAccessFile.seek(1800*(pageNumber-1));
+            for(int i=1;i<=1800;i++){
+                sb.append((char) randomAccessFile.read());
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return sb.toString();
+    }
 }
