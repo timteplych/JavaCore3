@@ -1,6 +1,7 @@
 package ru.ttv.javacore3.lesson3;
 
 import java.io.*;
+import java.util.Scanner;
 
 
 public class App {
@@ -23,14 +24,17 @@ public class App {
         File resultFile = myFileReader.getJoinedFile(paths);
 
         //Task 3
-        long startTime = System.currentTimeMillis();
-        System.out.println(myFileReader.getPageByNumber("C:/JavaProjects/testPageReading.txt",10));
-        System.out.println("10th page");
-        System.out.println(System.currentTimeMillis() - startTime);
-
-        startTime = System.currentTimeMillis();
-        System.out.println(myFileReader.getPageByNumber("C:/JavaProjects/testPageReading.txt",100));
-        System.out.println("100th page");
-        System.out.println(System.currentTimeMillis() - startTime);
+        Scanner scanner = new Scanner(System.in);
+        while (true){
+            String str = scanner.nextLine();
+            if("exit".equals(str)){
+                break;
+            }
+            int pageNumber = Integer.parseInt(str);
+            long startTime = System.currentTimeMillis();
+            System.out.println(myFileReader.getPageByNumber("C:/JavaProjects/testPageReading.txt",pageNumber));
+            System.out.println(pageNumber + "th page");
+            System.out.println(System.currentTimeMillis() - startTime);
+        }
     }
 }
