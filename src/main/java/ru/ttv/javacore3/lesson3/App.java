@@ -20,19 +20,12 @@ public class App {
     //RandomAccessFile
 
     public static void main(String[] args){
-        try {
-            FileInputStream fis = new FileInputStream("c:/JavaProjects/12345.txt");
-            InputStreamReader isr = new InputStreamReader(fis);
-            BufferedReader bfr = new BufferedReader(isr);
-            String str;
-            while ((str = bfr.readLine()) != null){
-                System.out.println(str);
-            }
+        MyFileReader myFileReader = new MyFileReader();
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        //Task #1
+        byte[] resultArray = myFileReader.getArrayFileData("C:/JavaProjects/test.txt");
+        for(byte result: resultArray){
+            System.out.println(result);
         }
 
     }
