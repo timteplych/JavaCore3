@@ -23,11 +23,12 @@ public class App {
         }
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка началась!!!");
         START.countDown();
-        Thread.sleep(1000);
 
         while (FINISH.getCount() > 1) { //Проверяем, собрались ли все автомобили
             Thread.sleep(100);//у финиша. Если нет, ждем 100ms
         }
+
+        FINISH.countDown();
 
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка закончилась!!!");
     }
