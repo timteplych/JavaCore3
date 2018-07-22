@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class AppTestLesson6 {
+public class GetSubArrayTest {
     @Parameterized.Parameters
     public static Collection<Object[]> data(){
         Object[][] testData = {
@@ -24,7 +24,7 @@ public class AppTestLesson6 {
     private int[] masIn;
     private int[] masOut;
 
-    public AppTestLesson6(int[] masIn, int[] masOut) {
+    public GetSubArrayTest(int[] masIn, int[] masOut) {
         this.masIn = masIn;
         this.masOut = masOut;
     }

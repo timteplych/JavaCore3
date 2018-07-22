@@ -14,10 +14,10 @@ public class ArrayProcessing {
     }
 
     public boolean checkArray(int[] array){
-        boolean found = false;
+        boolean found = true;
         for(int i=0; i<array.length; i++){
-            if(array[i] == 1 || array[i] == 4){
-                found = true;
+            if((array[i] != 1) & (array[i] != 4)){
+                found = false;
             }
         }
         return found;
