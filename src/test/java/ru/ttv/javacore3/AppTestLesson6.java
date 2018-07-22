@@ -1,17 +1,42 @@
 package ru.ttv.javacore3;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
-import ru.ttv.javacore3.lesson6.App;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import ru.ttv.javacore3.lesson6.ArrayProcessing;
 
+import java.util.Arrays;
+import java.util.Collection;
+
+@RunWith(Parameterized.class)
 public class AppTestLesson6 {
-    private App app;
+    @Parameterized.Parameters
+    public static Collection<Object[]> data(){
+        Object[][] testData = {
+                {new int[]{ 1, 2, 4, 4, 2, 3, 4, 1, 7},new int[]{1, 7}},
+                {new int[]{ 1, 2, 4, 4, 2, 3, 5, 1, 7},new int[]{ 2, 3, 5, 1, 7}},
+                {new int[]{ 1, 2, 4, 1, 2, 3, 1, 1, 7},new int[]{ 1, 2, 3, 1, 1, 7}}
+        };
+        return Arrays.asList(testData);
+    }
+    private int[] masIn;
+    private int[] masOut;
+
+    public AppTestLesson6(int[] masIn, int[] masOut) {
+        this.masIn = masIn;
+        this.masOut = masOut;
+    }
+
+    private ArrayProcessing arrayProcessing;
+    @Before
+    public void startTest(){
+        arrayProcessing = new ArrayProcessing();
+    }
     @Test
     public void testGetSubArray(){
-        app = new App();
-        int[] masIn = { 1, 2, 4, 4, 2, 3, 4, 1, 7};
-        int[] masOut = {1, 7};
-        Assert.assertArrayEquals(masOut,App.getSubArray(masIn));
+        Assert.assertArrayEquals(masOut,arrayProcessing.getSubArray(masIn));
     }
 
 }

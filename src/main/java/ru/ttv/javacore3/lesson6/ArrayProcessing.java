@@ -12,4 +12,14 @@ public class ArrayProcessing {
         }
         throw new RuntimeException();
     }
+
+    public boolean checkArray(int[] array){
+        boolean found = false;
+        for(int i=0; i<array.length; i++){
+            if(array[i] == 1 || array[i] == 4){
+                found = true;
+            }
+        }
+        return found;
+    }
 }
