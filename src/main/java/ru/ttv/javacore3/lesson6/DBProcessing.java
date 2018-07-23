@@ -55,9 +55,10 @@ public class DBProcessing {
     }
 
     public int changeGrade(String surname, String newGrade) throws SQLException{
-        String query = "UPDATE Students SET GRADE = ? WHERE Name = ?";
+        String query = "UPDATE Students SET GRADE = ? WHERE SURNAME = ?";
         PreparedStatement pstmnt = conn.prepareStatement(query);
         pstmnt.setString(1,newGrade);
+        pstmnt.setString(2,surname);
         return pstmnt.executeUpdate();
     }
 
@@ -70,6 +71,13 @@ public class DBProcessing {
             return rs.getString(1);
         }
         return null;
+    }
+
+    public void deleteRecord(String surname) throws SQLException{
+        String query = "DELETE FROM Students WHERE SURNAME = ?";
+        PreparedStatement pstmnt = conn.prepareStatement(query);
+        pstmnt.setString(1,surname);
+        pstmnt.executeUpdate();
     }
 
 }
