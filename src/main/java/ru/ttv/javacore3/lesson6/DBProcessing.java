@@ -26,7 +26,7 @@ public class DBProcessing {
         sb.append("CREATE TABLE IF NOT EXISTS  students (");
         sb.append("ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,");
         sb.append("SURNAME TEXT NOT NULL,");
-        sb.append("GRADE TEXT");
+        sb.append("GRADE TEXT);");
         sb.append("DELETE FROM students;");
         return sb.toString();
     }
@@ -49,8 +49,8 @@ public class DBProcessing {
     public int addStudent(String surname, String grade) throws SQLException{
         String query = "INSERT INTO students (SURNAME, GRADE) VALUES (?,?)";
         PreparedStatement pstmnt = conn.prepareStatement(query);
-        pstmnt.setString(1,"Ivanov");
-        pstmnt.setString(2,"5");
+        pstmnt.setString(1,surname);
+        pstmnt.setString(2,grade);
         return pstmnt.executeUpdate();
     }
 
@@ -71,4 +71,5 @@ public class DBProcessing {
         }
         return null;
     }
+
 }
