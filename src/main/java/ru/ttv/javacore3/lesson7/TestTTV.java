@@ -6,17 +6,14 @@ import ru.ttv.javacore3.lesson7.annotations.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class TestTTV {
     private static Object object;
 
     public static void start(Class testClass, Object obj){
-        testProcess(testClass);
         object = obj;
+        testProcess(testClass);
     }
 
     public static void start(String className,Object obj){
@@ -38,22 +35,27 @@ public class TestTTV {
     }
 
     private static void processTests(Method[] methods) {
-        Map<Integer,Method> testMethods = new TreeMap();
+        Map<Method,Integer> testMethods = new HashMap<>();
         for(Method method: methods){
             if(method.getAnnotation(Test.class) != null){
                 Test testAnnotation = method.getAnnotation(Test.class);
-                testMethods.put(testAnnotation.priority(),method);
+                testMethods.put(method,testAnnotation.priority());
             }
         }
-        testMethods.forEach((integer, method) -> {
-            try {
-                method.invoke(object);
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
+        for(int i=1; i<=10; i++) {
+            for(Map.Entry<Method,Integer> entry: testMethods.entrySet()){
+                if(entry.getValue() == i){
+                    try {
+                        entry.getKey().invoke(object);
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    } catch (InvocationTargetException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
-        });
+
+        }
     }
 
     private static void processAfterClass(Method[] methods) {
@@ -85,7 +87,8 @@ public class TestTTV {
         if(beforeMethods.size() == 0) return;
         if(beforeMethods.size() == 1){
             try {
-                beforeMethods.get(0).invoke(object);
+                Method method = beforeMethods.get(0);
+                method.invoke(object);
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             } catch (InvocationTargetException e) {

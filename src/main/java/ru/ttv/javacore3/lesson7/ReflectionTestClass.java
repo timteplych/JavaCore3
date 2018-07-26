@@ -30,6 +30,11 @@ public class ReflectionTestClass {
         System.out.println("test 3");
     }
 
+    @Test(priority = 2)
+    public void testTTV_4(){
+        System.out.println("test 4");
+    }
+
     @AfterSuite
     public void afterTestTTV(){
         System.out.println("After test TTV");
