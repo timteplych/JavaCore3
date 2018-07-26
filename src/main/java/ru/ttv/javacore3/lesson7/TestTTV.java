@@ -13,7 +13,7 @@ public class TestTTV {
 
     public static void start(Class testClass, Object obj){
         object = obj;
-        testProcess(testClass);
+        beginTest(testClass);
     }
 
     public static void start(String className,Object obj){
@@ -24,10 +24,10 @@ public class TestTTV {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        testProcess(testClass);
+        beginTest(testClass);
 
     }
-    private static void testProcess(Class testClass) {
+    private static void beginTest(Class testClass) {
         Method[] methods = testClass.getDeclaredMethods();
         processBeforeMethod(methods);
         processTests(methods);
